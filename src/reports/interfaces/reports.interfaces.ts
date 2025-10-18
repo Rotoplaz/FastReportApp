@@ -1,0 +1,77 @@
+export interface MetricsResponse {
+    totalReports: number;
+    reportsInProgress: number;
+    reportsPending: number;
+    reportsCompleted: number;
+    reportsPriorityHigh: number;
+}
+
+export enum OverViewMode {
+    last_7_days ="last_7_days", 
+    last_30_days ="last_30_days", 
+    last_3_months ="last_3_months", 
+    year_to_date ="year_to_date"
+}
+export interface OverviewData {
+    name: string;
+    total: number
+}
+
+export interface GetReportsRequest {
+    limit:         number;
+    page:          number;
+    numberOfPages: number;
+    count:         number;
+    data:          Report[];
+}
+
+export interface Report {
+    id:           string;
+    departmentId: string;
+    studentId:    string;
+    title:        string;
+    description:  string;
+    priority:     Priority;
+    status:       Status;
+    location:     string;
+    createdAt:    Date;
+    updatedAt:    Date;
+    student:      Student;
+    department:   Department;
+    images:       Image[];
+}
+
+export interface Department {
+    id:          string;
+    name:        string;
+    description: string;
+}
+
+export interface Image {
+    url: string;
+    id:  string;
+}
+
+export enum Priority {
+    High = "high",
+    Low = "low",
+    Medium = "medium",
+}
+
+export enum Status {
+    Completed = "completed",
+    InProgress = "in_progress",
+    Pending = "pending",
+}
+
+export interface Student {
+    id:        string;
+    firstName: string;
+    lastName:  string;
+    email:     string;
+    role:      Role;
+}
+
+export enum Role {
+    Student = "student",
+}
